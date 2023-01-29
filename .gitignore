@@ -350,3 +350,4 @@ MigrationBackup/
 .ionide/
 
 .DS_Store
+src/Serivces/Catalog/Catalog.API/Catalog.API.md

@@ -1,0 +1,8 @@
+- setup the project directory structure ``` src/Services/Catalog```
+- create Catalog.API web api ``` src/Services/Catalog/Catalog.API```
+  - Install MongoDB Driver ``` dotnet add package MongoDB.Driver --version 2.19.0 ```
+- pull mongoDB docker image and run container 
+  - ``` docker pull mongo ``` pull docker image
+  - ``` docker run -d -p 27017:27017 --name shopping-mongo mongo ``` create container
+  - ``` docker exec -it shopping-mongo /bin/bash ``` run mongoDB container in interactive mode
+- Add Product.cs Entity 

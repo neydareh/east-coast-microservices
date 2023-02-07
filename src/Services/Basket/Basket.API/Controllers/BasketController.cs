@@ -19,7 +19,7 @@ namespace Basket.API.Controllers {
     public async Task<ActionResult<ShoppingCart>> GetBasket(string userName)
     {
       var basket = await _basketRepository.GetBasketAsync(userName);
-      return Ok(basket ?? new ShoppingCart(userName)); //TODO: we might have to save this newly created basket/shopping cart
+      return Ok(basket ?? new ShoppingCart(userName));
     }
 
     [HttpPost]

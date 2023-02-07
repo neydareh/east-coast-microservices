@@ -1,14 +1,14 @@
 using Basket.API.Entities.Interfaces;
-using System;
-using System.Collections.Generic;
 
 namespace Basket.API.Entities
 {
-  public class ShoppingCart : IShoppingCart
+  public class ShoppingCartV2 : IShoppingCart
   {
+    public string Description { get; set; }
     public string UserName { get; set; }
     public List<ShoppingCartItem> Items { get; set; } = new List<ShoppingCartItem>();
-    public ShoppingCart(string userName)
+
+    public ShoppingCartV2(string userName)
     {
       UserName = userName.ToLower();
     }

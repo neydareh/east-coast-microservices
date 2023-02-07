@@ -2,10 +2,8 @@ using System;
 using MongoDB.Driver;
 using Catalog.API.Entities;
 
-namespace Catalog.API.Data
-{
-  public class CatalogContextSeed
-  {
+namespace Catalog.API.Data {
+  public class CatalogContextSeed {
     public static void SeedData(IMongoCollection<Product> productCollection)
     {
       bool doesProductExist = productCollection.Find(product => true).Any();
@@ -20,16 +18,16 @@ namespace Catalog.API.Data
       return new List<Product>()
       {
         new Product()
-                {
-                    Id = "602d2149e773f2a3990b47f5",
-                    Name = "IPhone X",
-                    Summary = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
-                    Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
-                    ImageFile = "product-1.png",
-                    Price = 950.00M,
-                    Category = "Smart Phone"
-                },
-                new Product()
+        {
+          Id = "602d2149e773f2a3990b47f5",
+          Name = "IPhone X",
+          Summary = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
+          Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
+          ImageFile = "product-1.png",
+          Price = 950.00M,
+          Category = "Smart Phone"
+        },
+        new Product()
                 {
                     Id = "602d2149e773f2a3990b47f6",
                     Name = "Samsung 10",
@@ -39,7 +37,7 @@ namespace Catalog.API.Data
                     Price = 840.00M,
                     Category = "Smart Phone"
                 },
-                new Product()
+        new Product()
                 {
                     Id = "602d2149e773f2a3990b47f7",
                     Name = "Huawei Plus",
@@ -49,7 +47,7 @@ namespace Catalog.API.Data
                     Price = 650.00M,
                     Category = "White Appliances"
                 },
-                new Product()
+        new Product()
                 {
                     Id = "602d2149e773f2a3990b47f8",
                     Name = "Xiaomi Mi 9",
@@ -59,7 +57,7 @@ namespace Catalog.API.Data
                     Price = 470.00M,
                     Category = "White Appliances"
                 },
-                new Product()
+        new Product()
                 {
                     Id = "602d2149e773f2a3990b47f9",
                     Name = "HTC U11+ Plus",
@@ -69,7 +67,7 @@ namespace Catalog.API.Data
                     Price = 380.00M,
                     Category = "Smart Phone"
                 },
-                new Product()
+        new Product()
                 {
                     Id = "602d2149e773f2a3990b47fa",
                     Name = "LG G7 ThinQ",
@@ -79,7 +77,7 @@ namespace Catalog.API.Data
                     Price = 240.00M,
                     Category = "Home Kitchen"
                 }
-            };
+      };
     }
   }
 }

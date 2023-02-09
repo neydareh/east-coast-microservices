@@ -346,9 +346,12 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
-# Ionide (cross platform F# VS Code tools) working folder
-.ionide/
 
 .DS_Store
 src/Serivces/Catalog/Catalog.API/Catalog.API.md
 /src/Services/Discount/Discount.API/appsettings.json
+/src/Services/Discount/Discount.API/appsettings.Development.json
+/src/Services/Catalog/Catalog.API/appsettings.json
+/src/Services/Catalog/Catalog.API/appsettings.Development.json
+/src/Services/Basket/Basket.API/appsettings.json
+/src/Services/Basket/Basket.API/appsettings.Development.json

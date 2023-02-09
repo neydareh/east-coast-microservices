@@ -351,3 +351,4 @@ MigrationBackup/
 
 .DS_Store
 src/Serivces/Catalog/Catalog.API/Catalog.API.md
+/src/Services/Discount/Discount.API/appsettings.json

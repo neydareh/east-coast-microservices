@@ -1,3 +1,4 @@
+using Discount.API.Extensions;
 using Discount.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +12,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
 
+const int retryValue = 5;
+
 var app = builder.Build();
+// Seeds the DB after building the app
+app.MigrateDB<Program>(retryValue);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

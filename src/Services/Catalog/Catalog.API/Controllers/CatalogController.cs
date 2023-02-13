@@ -1,17 +1,10 @@
-using System;
-using Catalog.API.Data;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using MongoDB.Driver;
 using Catalog.API.Entities;
 using Catalog.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System.Net;
 
 
-namespace Catalog.API.Controllers
-{
+namespace Catalog.API.Controllers {
   [ApiController]
   [Route("api/v1/[controller]")]
   public class CatalogController : ControllerBase

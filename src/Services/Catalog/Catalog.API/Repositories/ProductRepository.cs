@@ -1,14 +1,10 @@
-using System;
 using Catalog.API.Data;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using MongoDB.Driver;
 using Catalog.API.Entities;
 
 
-namespace Catalog.API.Repositories
-{
-    public class ProductRepository : IProductRepository
+namespace Catalog.API.Repositories {
+  public class ProductRepository : IProductRepository
     {
       private readonly ICatalogContext _context;
 

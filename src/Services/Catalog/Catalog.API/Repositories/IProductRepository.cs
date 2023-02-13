@@ -1,10 +1,6 @@
-using System;
 using Catalog.API.Entities;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 
-namespace Catalog.API.Repositories
-{
+namespace Catalog.API.Repositories {
   public interface IProductRepository
   {
 		Task<IEnumerable<Product>> GetProducts();

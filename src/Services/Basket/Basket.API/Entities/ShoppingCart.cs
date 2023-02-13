@@ -1,9 +1,6 @@
 using Basket.API.Entities.Interfaces;
-using System;
-using System.Collections.Generic;
 
-namespace Basket.API.Entities
-{
+namespace Basket.API.Entities {
   public class ShoppingCart : IShoppingCart
   {
     public string UserName { get; set; }

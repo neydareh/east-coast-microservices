@@ -15,6 +15,7 @@ builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
 const int retryValue = 5;
 
 var app = builder.Build();
+
 // Seeds the DB after building the app
 app.MigrateDB<Program>(retryValue);
 

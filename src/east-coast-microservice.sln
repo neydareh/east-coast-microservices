@@ -18,6 +18,8 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API.Test", "Tests\Catalog.API.Test\Catalog.API.Test.csproj", "{236D0026-94B3-4FD3-BC8C-5C34A79E0559}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.GRPC", "Services\Discount\Discount.GRPC\Discount.GRPC.csproj", "{26B07A74-3BF3-405B-B125-70CE81817230}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{236D0026-94B3-4FD3-BC8C-5C34A79E0559}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{236D0026-94B3-4FD3-BC8C-5C34A79E0559}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{236D0026-94B3-4FD3-BC8C-5C34A79E0559}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26B07A74-3BF3-405B-B125-70CE81817230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26B07A74-3BF3-405B-B125-70CE81817230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26B07A74-3BF3-405B-B125-70CE81817230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26B07A74-3BF3-405B-B125-70CE81817230}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

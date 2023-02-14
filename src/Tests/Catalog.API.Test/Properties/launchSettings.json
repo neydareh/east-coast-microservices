@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Catalog.API.Test": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API", "Services\Cat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.API", "Services\Basket\Basket.API\Basket.API.csproj", "{6C2E4BEA-EDC4-42F1-BA05-B7ECC0E1D02A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.API", "Services\Discount\Discount.API\Discount.API.csproj", "{7F563A43-72E7-43E0-9A12-2FF847E817D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discount.API", "Services\Discount\Discount.API\Discount.API.csproj", "{7F563A43-72E7-43E0-9A12-2FF847E817D1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gitignore", "gitignore", "{55BF87AF-108B-4798-87F8-E50EC347201D}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gitignore", "gitignore", "{
 	EndProjectSection
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{2B7A0948-87CC-45DB-A228-0568EC7E2AD5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API.Test", "Tests\Catalog.API.Test\Catalog.API.Test.csproj", "{236D0026-94B3-4FD3-BC8C-5C34A79E0559}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{2B7A0948-87CC-45DB-A228-0568EC7E2AD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B7A0948-87CC-45DB-A228-0568EC7E2AD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B7A0948-87CC-45DB-A228-0568EC7E2AD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{236D0026-94B3-4FD3-BC8C-5C34A79E0559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{236D0026-94B3-4FD3-BC8C-5C34A79E0559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{236D0026-94B3-4FD3-BC8C-5C34A79E0559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{236D0026-94B3-4FD3-BC8C-5C34A79E0559}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,8 +2,10 @@
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 
-namespace Basket.API.Repositories {
-  public class BasketRepository : IBasketRepository {
+namespace Basket.API.Repositories
+{
+  public class BasketRepository : IBasketRepository
+  {
     private readonly IDistributedCache _redisCache;
 
     public BasketRepository(IDistributedCache redisCache)
@@ -22,28 +24,12 @@ namespace Basket.API.Repositories {
       return null;
     }
 
-    public async Task<ShoppingCartV2?> GetShoppingCartAsync(string userName)
-    {
-      var basket = await _redisCache.GetStringAsync(userName);
-      if (!String.IsNullOrEmpty(basket))
-      {
-        return JsonConvert.DeserializeObject<ShoppingCartV2>(basket);
-
-      };
-      return null;
-    }
-
-    public async Task<ShoppingCart?> UpdateBasketAsync (ShoppingCart basket)
+    public async Task<ShoppingCart?> UpdateBasketAsync(ShoppingCart basket)
     {
       await _redisCache.SetStringAsync(basket.UserName, JsonConvert.SerializeObject(basket));
       return await GetBasketAsync(basket.UserName);
     }
 
-    public async Task<ShoppingCartV2?> UpdateShoppingCartAsync(ShoppingCartV2 shoppingCart)
-    {
-      await _redisCache.SetStringAsync(shoppingCart.UserName, JsonConvert.SerializeObject(shoppingCart));
-      return await GetShoppingCartAsync(shoppingCart.UserName);
-    }
 
     public async Task DeleteBasketAsync(string userName)
     {

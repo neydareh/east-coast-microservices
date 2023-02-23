@@ -34,7 +34,7 @@ namespace Catalog.API.Test
     public async void GetProductById_ShouldReturnNothing_WhenProductDoesntExist()
     {
       // arrange
-      mockedProductRepo.GetProduct(Arg.Any<string>()).Returns((Product)null);
+      mockedProductRepo.GetProduct(Arg.Any<string>())!.Returns((Product)null!);
       // act
       var product = await mockedProductRepo.GetProduct("productId");
       // assert
@@ -45,16 +45,34 @@ namespace Catalog.API.Test
     public async void DeleteProduct_ShouldReturnTrue_WhenProductIsDeleted()
     {
       // arrange
-      var productId = Guid.NewGuid().ToString();
-      var listOfProducts = new List<Product> { new Product { Id = "1", Name = "Product One" }, new Product { Id = "2", Name = "Product Two" } };
-      mockedProductRepo.DeleteProduct(productId).Returns(true);
-
+      var productId = "1";
+      var listOfProducts = new List<Product> {
+        new Product { Id = "1", Name = "Product One" },
+        new Product { Id = "2", Name = "Product Two" }
+      };
+      mockedProductRepo.DeleteProduct(productId).Returns(x =>
+      {
+        var filteredProduct = listOfProducts.Find(x => x.Id == productId);
+        return (filteredProduct != null) ? listOfProducts.Remove(filteredProduct) : false;
+      });
       // act
       var isProductDeleted = await mockedProductRepo.DeleteProduct(productId);
-
       // assert
       Assert.True(isProductDeleted);
       await mockedProductRepo.Received().DeleteProduct(Arg.Any<string>());
+    }
+
+    [Fact]
+    public async void UpdateProduct_ShouldReturnTrue_WhenProductIsUpdated()
+    {
+      var updatedProduct = new Product
+      {
+        Id = "1",
+        Name = "Product One"
+      };
+      mockedProductRepo.UpdateProduct(updatedProduct).Returns(true);
+      var isUpdated = await mockedProductRepo.UpdateProduct(updatedProduct);
+      Assert.True(isUpdated);
     }
   }
 }

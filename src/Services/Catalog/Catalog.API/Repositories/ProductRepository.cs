@@ -7,7 +7,6 @@ namespace Catalog.API.Repositories {
   public class ProductRepository : IProductRepository
     {
       private readonly ICatalogContext _context;
-
       public ProductRepository(ICatalogContext context)
       {
         _context = context ?? throw new ArgumentNullException(nameof(context));
@@ -17,12 +16,10 @@ namespace Catalog.API.Repositories {
       {
         return await _context.Products.Find(product => true).ToListAsync();
       }
-
       public async Task<Product> GetProduct(string id)
       {
         return await _context.Products.Find(product => product.Id == id).FirstOrDefaultAsync();
       }
-
       public async Task<IEnumerable<Product>> GetProductByName(string name)
       {
         FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(product => product.Name, name);

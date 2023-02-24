@@ -1,7 +1,7 @@
 using Catalog.API.Data;
 using MongoDB.Driver;
 using Catalog.API.Entities;
-
+using System.Globalization;
 
 namespace Catalog.API.Repositories
 {
@@ -9,6 +9,8 @@ namespace Catalog.API.Repositories
   {
     private readonly ICatalogContext _context;
     private readonly ILogger _logger;
+    private TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+
     public ProductRepository(ICatalogContext context, ILogger logger)
     {
       _context = context ?? throw new ArgumentNullException(nameof(context));
@@ -29,7 +31,7 @@ namespace Catalog.API.Repositories
     }
     public async Task<IEnumerable<Product>> GetProductByName(string name)
     {
-      FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(product => product.Name, name);
+      FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(product => product.Name, textInfo.ToLower(name));
       var filteredList = await _context.Products.Find(filter).ToListAsync();
       if (filteredList.Count > 0)
       {
@@ -41,16 +43,21 @@ namespace Catalog.API.Repositories
     }
     public async Task<IEnumerable<Product>> GetProductByCategory(string categoryName)
     {
-      FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(product => product.Category, categoryName);
+      FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(product => product.Category, textInfo.ToLower(categoryName));
       return await _context.Products.Find(filter).ToListAsync();
     }
     public async Task CreateProduct(Product product)
     {
+      product.Name = textInfo.ToLower(product.Name!);
+      product.Category = textInfo.ToLower(product.Category!);
       _logger.LogInformation($"Product: {product.ToString()} was successfully created");
       await _context.Products.InsertOneAsync(product);
     }
     public async Task<bool> UpdateProduct(Product product)
     {
+      product.Name = textInfo.ToLower(product.Name!);
+      product.Category = textInfo.ToLower(product.Category!);
+
       var updatedResult = await _context.Products.ReplaceOneAsync(filter: oldProduct => oldProduct.Id == product.Id, replacement: product);
       var isUpdated = updatedResult.IsAcknowledged && updatedResult.ModifiedCount > 0;
       if (isUpdated)

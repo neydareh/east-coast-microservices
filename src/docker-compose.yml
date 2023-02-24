@@ -14,7 +14,7 @@ services:
   # Utilities
   portainer:
     image: portainer/portainer-ce
-   
+
   pgadmin:
     image: dpage/pgadmin4
 

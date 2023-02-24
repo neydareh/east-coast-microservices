@@ -4,17 +4,16 @@ services:
   # Database
   catalogdb:
     image: mongo
-
+  mongo-express:
+    image: mongo-express:latest
   basketdb:
     image: redis:alpine
-
   discountdb:
     image: postgres
 
   # Utilities
   portainer:
     image: portainer/portainer-ce
-
   pgadmin:
     image: dpage/pgadmin4
 

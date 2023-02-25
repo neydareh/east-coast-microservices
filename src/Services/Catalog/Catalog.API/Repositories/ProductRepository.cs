@@ -46,24 +46,46 @@ namespace Catalog.API.Repositories
       FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(product => product.Category, textInfo.ToLower(categoryName));
       return await _context.Products.Find(filter).ToListAsync();
     }
-    public async Task CreateProduct(Product product)
+    public async Task CreateProduct(ProductDto productRequest)
     {
-      product.Name = textInfo.ToLower(product.Name!);
-      product.Category = textInfo.ToLower(product.Category!);
-      _logger.LogInformation($"Product: {product.ToString()} was successfully created");
-      await _context.Products.InsertOneAsync(product);
-    }
-    public async Task<bool> UpdateProduct(Product product)
-    {
-      product.Name = textInfo.ToLower(product.Name!);
-      product.Category = textInfo.ToLower(product.Category!);
-
-      var updatedResult = await _context.Products.ReplaceOneAsync(filter: oldProduct => oldProduct.Id == product.Id, replacement: product);
-      var isUpdated = updatedResult.IsAcknowledged && updatedResult.ModifiedCount > 0;
-      if (isUpdated)
+      if (productRequest != null)
       {
-        _logger.LogInformation($"Product with Id: {product.Id} was successfully updated");
-        return isUpdated;
+        var product = new Product
+        {
+          Id = Guid.NewGuid().ToString(),
+          Name = textInfo.ToLower(productRequest.Name!),
+          Category = textInfo.ToLower(productRequest.Category!),
+          Summary = productRequest.Summary,
+          Description = productRequest.Description,
+          ImageFile = productRequest.ImageFile,
+          Price = productRequest.Price
+        };
+        _logger.LogInformation($"Product: {product.ToString()} was successfully created");
+        await _context.Products.InsertOneAsync(product);
+      }
+    }
+    public async Task<bool> UpdateProduct(ProductDto productRequest)
+    {
+      if (productRequest != null)
+      {
+        var product = new Product
+        {
+          Id = Guid.NewGuid().ToString(),
+          Name = textInfo.ToLower(productRequest.Name!),
+          Category = textInfo.ToLower(productRequest.Category!),
+          Summary = productRequest.Summary,
+          Description = productRequest.Description,
+          ImageFile = productRequest.ImageFile,
+          Price = productRequest.Price,
+          UpdateAt = DateTime.UtcNow,
+        };
+        var updatedResult = await _context.Products.ReplaceOneAsync(filter: oldProduct => oldProduct.Id == product.Id, replacement: product);
+        var isUpdated = updatedResult.IsAcknowledged && updatedResult.ModifiedCount > 0;
+        if (isUpdated)
+        {
+          _logger.LogInformation($"Product with Id: {product.Id} was successfully updated");
+          return isUpdated;
+        }
       }
       return false;
     }

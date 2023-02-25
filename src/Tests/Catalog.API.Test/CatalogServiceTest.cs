@@ -65,9 +65,8 @@ namespace Catalog.API.Test
     [Fact]
     public async void UpdateProduct_ShouldReturnTrue_WhenProductIsUpdated()
     {
-      var updatedProduct = new Product
+      var updatedProduct = new ProductDto
       {
-        Id = "1",
         Name = "Product One"
       };
       mockedProductRepo.UpdateProduct(updatedProduct).Returns(true);

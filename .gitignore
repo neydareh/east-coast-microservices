@@ -355,3 +355,5 @@ src/Serivces/Catalog/Catalog.API/Catalog.API.md
 /src/Services/Catalog/Catalog.API/appsettings.Development.json
 /src/Services/Basket/Basket.API/appsettings.json
 /src/Services/Basket/Basket.API/appsettings.Development.json
+
+*.env

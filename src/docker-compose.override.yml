@@ -16,7 +16,7 @@ services:
     ports:
       - 8081:8081
     environment:
-      - ME_CONFIG_MONGODB_SERVER=catalogdb
+      - ME_CONFIG_MONGODB_SERVER=${ME_CONFIG_MONGODB_SERVER}
     depends_on:
       - catalogdb
 
@@ -29,9 +29,9 @@ services:
   discountdb:
     container_name: discountdb
     environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
-      - POSTGRES_DB=DiscountDb
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
     restart: always
     ports:
       - "5432:5432"
@@ -52,8 +52,8 @@ services:
   pgadmin:
     container_name: pgadmin
     environment:
-      - PGADMIN_DEFAULT_EMAIL=kunleneye@gmail.com
-      - PGADMIN_DEFAULT_PASSWORD=admin1234
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
     restart: always
     ports:
       - "5050:80"
@@ -65,7 +65,7 @@ services:
     container_name: catalog.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "DatabaseSettings:ConnectionString=mongodb://catalogdb:27017"
+      - "DatabaseSettings:ConnectionString=${CATALOGDB_CONNECTION_STRING}"
     depends_on:
       - catalogdb
     ports:
@@ -75,8 +75,8 @@ services:
     container_name: basket.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "CacheSettings:ConnectionString=basketdb:6379"
-      - "GrpcSettings:DiscountUrl=http://discount.grpc"
+      - "CacheSettings:ConnectionString=${BASKETDB_CONNECTION_STRING}"
+      - "GrpcSettings:DiscountUrl=${DISCOUNT_GRPC_URL}"
     depends_on:
       - basketdb
     ports:
@@ -86,7 +86,7 @@ services:
     container_name: discount.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "DatabaseSettings:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin;"
+      - "DatabaseSettings:ConnectionString=${DISCOUNTDB_CONNECTION_STRING}"
     depends_on:
       - discountdb
     ports:
@@ -96,7 +96,7 @@ services:
     container_name: discount.grpc
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "DatabaseSettings:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin;"
+      - "DatabaseSettings:ConnectionString=${DISCOUNTDB_CONNECTION_STRING}"
     depends_on:
       - discountdb
     ports:

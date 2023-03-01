@@ -5,9 +5,6 @@ namespace Ordering.Domain.Entity {
     public string? UserName { get; set; }
     public decimal TotalPrice { get; set; }
 
-    public Billing? Billing { get; set; }
-    public Payment? Payment { get; set; }
-
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     public string? EmailAddress { get; set; }

@@ -4,9 +4,7 @@ namespace Ordering.Application.Feature.Orders.Query.GetOrdersList {
     public string? UserName { get; set; }
     public decimal TotalPrice { get; set; }
 
-    public Billing? Billing { get; set; }
-    public Payment? Payment { get; set; }
-
+    // Billing
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     public string? EmailAddress { get; set; }
@@ -15,6 +13,7 @@ namespace Ordering.Application.Feature.Orders.Query.GetOrdersList {
     public string? State { get; set; }
     public string? ZipCode { get; set; }
 
+    // Payment
     public string? CardName { get; set; }
     public string? CardNumber { get; set; }
   }

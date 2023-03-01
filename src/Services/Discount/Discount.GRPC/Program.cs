@@ -1,4 +1,3 @@
-using AutoMapper;
 using Discount.GRPC.Extensions;
 using Discount.GRPC.Repositories;
 using Discount.GRPC.Services;

@@ -2,7 +2,6 @@
 using Basket.API.GRPC.Services;
 using Basket.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace Basket.API.Controllers {
   [ApiController]

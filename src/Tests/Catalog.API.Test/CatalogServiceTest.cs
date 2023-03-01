@@ -2,10 +2,8 @@ using Catalog.API.Entities;
 using Catalog.API.Repositories;
 using NSubstitute;
 
-namespace Catalog.API.Test
-{
-  public class CatalogServiceTest
-  {
+namespace Catalog.API.Test {
+  public class CatalogServiceTest {
     private readonly IProductRepository mockedProductRepo;
     public CatalogServiceTest()
     {

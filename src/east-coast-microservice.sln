@@ -18,7 +18,13 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API.Test", "Tests\Catalog.API.Test\Catalog.API.Test.csproj", "{236D0026-94B3-4FD3-BC8C-5C34A79E0559}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.GRPC", "Services\Discount\Discount.GRPC\Discount.GRPC.csproj", "{26B07A74-3BF3-405B-B125-70CE81817230}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discount.GRPC", "Services\Discount\Discount.GRPC\Discount.GRPC.csproj", "{26B07A74-3BF3-405B-B125-70CE81817230}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{431C6152-A548-4B32-9AD0-41DE917A182A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{08A21FFA-B0FD-4A6F-8FB1-08A6EEE35486}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{12846F80-B1F1-4C24-A745-FC1108DACDBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +59,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E40BEE92-9E3B-4C28-8D67-C7C8C3651B12} = {08A21FFA-B0FD-4A6F-8FB1-08A6EEE35486}
+		{6C2E4BEA-EDC4-42F1-BA05-B7ECC0E1D02A} = {431C6152-A548-4B32-9AD0-41DE917A182A}
+		{7F563A43-72E7-43E0-9A12-2FF847E817D1} = {12846F80-B1F1-4C24-A745-FC1108DACDBC}
+		{236D0026-94B3-4FD3-BC8C-5C34A79E0559} = {08A21FFA-B0FD-4A6F-8FB1-08A6EEE35486}
+		{26B07A74-3BF3-405B-B125-70CE81817230} = {12846F80-B1F1-4C24-A745-FC1108DACDBC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A80B3ED-C9FD-450F-BD76-3C26D0C2D397}

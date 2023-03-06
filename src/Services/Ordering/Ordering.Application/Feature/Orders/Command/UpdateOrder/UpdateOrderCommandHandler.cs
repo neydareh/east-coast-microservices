@@ -10,9 +10,9 @@ namespace Ordering.Application.Feature.Orders.Command.UpdateOrder {
 
     private readonly IOrderRepository _orderRepository;
     private readonly IMapper _mapper;
-    private readonly ILogger<ChecoutOrderCommandHandler> _logger;
+    private readonly ILogger<UpdateOrderCommandHandler> _logger;
 
-    public UpdateOrderCommandHandler(IOrderRepository orderRepository, IMapper mapper, ILogger<ChecoutOrderCommandHandler> logger)
+    public UpdateOrderCommandHandler(IOrderRepository orderRepository, IMapper mapper, ILogger<UpdateOrderCommandHandler> logger)
     {
       _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
       _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));

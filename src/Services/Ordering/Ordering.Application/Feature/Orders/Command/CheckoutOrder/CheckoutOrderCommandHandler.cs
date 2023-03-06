@@ -7,13 +7,13 @@ using Ordering.Application.Model;
 using Ordering.Domain.Entity;
 
 namespace Ordering.Application.Feature.Orders.Command.CheckoutOrder {
-  public class ChecoutOrderCommandHandler : IRequestHandler<CheckoutOrderCommand, int> {
+  public class CheckoutOrderCommandHandler : IRequestHandler<CheckoutOrderCommand, int> {
     private readonly IOrderRepository _orderRepository;
     private readonly IMapper _mapper;
     private readonly IEmailService _emailService;
-    private readonly ILogger<ChecoutOrderCommandHandler> _logger;
+    private readonly ILogger<CheckoutOrderCommandHandler> _logger;
 
-    public ChecoutOrderCommandHandler(IOrderRepository orderRepository, IMapper mapper, IEmailService emailService, ILogger<ChecoutOrderCommandHandler> logger)
+    public CheckoutOrderCommandHandler(IOrderRepository orderRepository, IMapper mapper, IEmailService emailService, ILogger<CheckoutOrderCommandHandler> logger)
     {
       _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
       _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
@@ -45,7 +45,7 @@ namespace Ordering.Application.Feature.Orders.Command.CheckoutOrder {
       try
       {
         await _emailService.SendEmail(email);
-      } catch (Exception ex)
+      } catch (System.Exception ex)
       {
         _logger.LogError($"Order {order.Id} failed due to an error with the mail service: {ex.Message}");
       }

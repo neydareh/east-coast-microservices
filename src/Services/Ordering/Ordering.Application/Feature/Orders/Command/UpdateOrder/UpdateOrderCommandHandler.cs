@@ -2,8 +2,6 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Ordering.Application.Contract.Persistence;
-using Ordering.Application.Feature.Orders.Command.CheckoutOrder;
-using Ordering.Domain.Entity;
 
 namespace Ordering.Application.Feature.Orders.Command.UpdateOrder {
   public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommand> {
@@ -22,11 +20,10 @@ namespace Ordering.Application.Feature.Orders.Command.UpdateOrder {
     public async Task Handle(UpdateOrderCommand request, CancellationToken cancellationToken)
     {
       var orderToUpdate = await _orderRepository.GetByIdAsync(request.Id);
-      if (orderToUpdate == null)
-      {
+      if (orderToUpdate == null) {
         _logger.LogError("Order doesn't exist in the database!");
       }
-      _mapper.Map(request, orderToUpdate, typeof(UpdateOrderCommand), typeof(Order));
+      _mapper.Map(request, orderToUpdate, typeof(UpdateOrderCommand), typeof(Domain.Entity.Order));
       await _orderRepository.UpdateAsync(orderToUpdate!);
       _logger.LogInformation($"Order {orderToUpdate!.Id} was successfully updated");
     }

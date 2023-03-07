@@ -1,7 +1,7 @@
 ﻿using MediatR;
 
 namespace Ordering.Application.Feature.Orders.Command.UpdateOrder {
-  public class UpdateOrderCommand : IRequest {
+  public class UpdateOrderCommandRequest : IRequest {
     public int Id { get; set; }
     public string? UserName { get; set; }
     public decimal TotalPrice { get; set; }

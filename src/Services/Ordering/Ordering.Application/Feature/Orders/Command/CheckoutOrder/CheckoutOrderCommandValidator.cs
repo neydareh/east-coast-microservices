@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 
 namespace Ordering.Application.Feature.Orders.Command.CheckoutOrder {
-  public class CheckoutOrderCommandValidator : AbstractValidator<CheckoutOrderCommand> {
+  public class CheckoutOrderCommandValidator : AbstractValidator<CheckoutOrderCommandRequest> {
     public CheckoutOrderCommandValidator()
     {
       RuleFor(p => p.UserName)

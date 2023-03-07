@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 
 namespace Ordering.Application.Feature.Orders.Command.UpdateOrder {
-  public class UpdateOrderCommandValidator : AbstractValidator<UpdateOrderCommand> {
+  public class UpdateOrderCommandValidator : AbstractValidator<UpdateOrderCommandRequest> {
     public UpdateOrderCommandValidator()
     {
       RuleFor(p => p.UserName)

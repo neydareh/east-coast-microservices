@@ -6,7 +6,7 @@ using Ordering.Application.Exception;
 using Ordering.Domain.Entity;
 
 namespace Ordering.Application.Feature.Orders.Command.UpdateOrder {
-  public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommand> {
+  public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommandRequest> {
 
     private readonly IOrderRepository _orderRepository;
     private readonly IMapper _mapper;
@@ -19,14 +19,14 @@ namespace Ordering.Application.Feature.Orders.Command.UpdateOrder {
       _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public async Task Handle(UpdateOrderCommand request, CancellationToken cancellationToken)
+    public async Task Handle(UpdateOrderCommandRequest request, CancellationToken cancellationToken)
     {
       var orderToUpdate = await _orderRepository.GetByIdAsync(request.Id);
       if (orderToUpdate == null) {
         _logger.LogError("Order doesn't exist in the database!");
         throw new NotFoundException(nameof(Order), request.Id);
       }
-      _mapper.Map(request, orderToUpdate, typeof(UpdateOrderCommand), typeof(Order));
+      _mapper.Map(request, orderToUpdate, typeof(UpdateOrderCommandRequest), typeof(Order));
       await _orderRepository.UpdateAsync(orderToUpdate!);
       _logger.LogInformation($"Order {orderToUpdate!.Id} was successfully updated");
     }

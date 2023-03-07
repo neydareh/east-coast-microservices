@@ -1,7 +1,7 @@
 ﻿using MediatR;
 
 namespace Ordering.Application.Feature.Orders.Command.CheckoutOrder {
-  public class CheckoutOrderCommand : IRequest<int> {
+  public class CheckoutOrderCommandRequest : IRequest<int> {
     public string? UserName { get; set; }
     public decimal TotalPrice { get; set; }
 

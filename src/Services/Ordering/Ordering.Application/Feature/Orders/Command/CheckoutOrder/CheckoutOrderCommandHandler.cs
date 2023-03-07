@@ -7,7 +7,7 @@ using Ordering.Application.Model;
 using Ordering.Domain.Entity;
 
 namespace Ordering.Application.Feature.Orders.Command.CheckoutOrder {
-  public class CheckoutOrderCommandHandler : IRequestHandler<CheckoutOrderCommand, int> {
+  public class CheckoutOrderCommandHandler : IRequestHandler<CheckoutOrderCommandRequest, int> {
     private readonly IOrderRepository _orderRepository;
     private readonly IMapper _mapper;
     private readonly IEmailService _emailService;
@@ -21,7 +21,7 @@ namespace Ordering.Application.Feature.Orders.Command.CheckoutOrder {
       _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public async Task<int> Handle(CheckoutOrderCommand request, CancellationToken cancellationToken) {
+    public async Task<int> Handle(CheckoutOrderCommandRequest request, CancellationToken cancellationToken) {
       var orderEntity = _mapper.Map<Order>(request);
       var newOrder = await _orderRepository.AddAsync(orderEntity);
       _logger.LogInformation($"Order {newOrder.Id} was successfully created!");

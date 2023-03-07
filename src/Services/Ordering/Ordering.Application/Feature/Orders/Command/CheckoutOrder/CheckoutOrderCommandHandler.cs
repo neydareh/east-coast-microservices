@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using Ordering.Application.Contract.Infrastructure;
 using Ordering.Application.Contract.Persistence;
 using Ordering.Application.Model;
-using Ordering.Domain.Entity;
 
 namespace Ordering.Application.Feature.Orders.Command.CheckoutOrder {
   public class CheckoutOrderCommandHandler : IRequestHandler<CheckoutOrderCommand, int> {
@@ -23,7 +22,7 @@ namespace Ordering.Application.Feature.Orders.Command.CheckoutOrder {
 
     public async Task<int> Handle(CheckoutOrderCommand request, CancellationToken cancellationToken)
     {
-      var orderEntity = _mapper.Map<Order>(request);
+      var orderEntity = _mapper.Map<Domain.Entity.Order>(request);
       var newOrder = await _orderRepository.AddAsync(orderEntity);
 
       _logger.LogInformation($"Order {newOrder.Id} was successfully created!");
@@ -33,7 +32,7 @@ namespace Ordering.Application.Feature.Orders.Command.CheckoutOrder {
       return newOrder.Id;
     }
 
-    private async Task SendMail(Order order)
+    private async Task SendMail(Domain.Entity.Order order)
     {
       var email = new Email()
       {

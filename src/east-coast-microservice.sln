@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C162AE47-586F-409A-AE75-2B5EF6E5120F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.API.Test", "Services\Basket\Basket.API.Test\Basket.API.Test.csproj", "{EAB0DFAD-0219-48C1-A4EA-82CC678B55B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +86,10 @@ Global
 		{68A52B97-23E8-4089-A7E1-8740FDD75438}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68A52B97-23E8-4089-A7E1-8740FDD75438}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68A52B97-23E8-4089-A7E1-8740FDD75438}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAB0DFAD-0219-48C1-A4EA-82CC678B55B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAB0DFAD-0219-48C1-A4EA-82CC678B55B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAB0DFAD-0219-48C1-A4EA-82CC678B55B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAB0DFAD-0219-48C1-A4EA-82CC678B55B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +109,7 @@ Global
 		{58111785-98F0-43AC-A956-7CDD2E52501D} = {578A4E33-520F-4E52-BFEA-48C5C069496A}
 		{8BA8733F-828A-4322-B4B4-E6A85BBF342A} = {578A4E33-520F-4E52-BFEA-48C5C069496A}
 		{68A52B97-23E8-4089-A7E1-8740FDD75438} = {578A4E33-520F-4E52-BFEA-48C5C069496A}
+		{EAB0DFAD-0219-48C1-A4EA-82CC678B55B7} = {431C6152-A548-4B32-9AD0-41DE917A182A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A80B3ED-C9FD-450F-BD76-3C26D0C2D397}

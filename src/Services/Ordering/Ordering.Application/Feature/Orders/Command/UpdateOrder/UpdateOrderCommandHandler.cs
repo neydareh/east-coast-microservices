@@ -23,7 +23,6 @@ namespace Ordering.Application.Feature.Orders.Command.UpdateOrder {
     {
       var orderToUpdate = await _orderRepository.GetByIdAsync(request.Id);
       if (orderToUpdate == null) {
-        _logger.LogError("Order doesn't exist in the database!");
         throw new NotFoundException(nameof(Order), request.Id);
       }
       _mapper.Map(request, orderToUpdate, typeof(UpdateOrderCommandRequest), typeof(Order));

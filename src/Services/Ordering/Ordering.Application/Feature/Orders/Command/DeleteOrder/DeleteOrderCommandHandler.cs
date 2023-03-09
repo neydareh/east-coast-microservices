@@ -22,7 +22,6 @@ public class DeleteOrderCommandHandler : IRequestHandler<DeleteOrderCommandReque
   public async Task Handle(DeleteOrderCommandRequest request, CancellationToken cancellationToken) {
     var orderToDelete = await _orderRepository.GetByIdAsync(request.Id);
     if (orderToDelete == null) {
-      _logger.LogError("Order doesn't exist in the database!");
       throw new NotFoundException(nameof(Order), request.Id);
     }
     await _orderRepository.DeleteAsync(orderToDelete!);

@@ -13,16 +13,16 @@ public class BasketServiceTest {
 
   public BasketServiceTest() {
     _mockedBasketRepo = Substitute.For<IBasketRepository>();
-    _mockedShoppingCart = new("mockedUsername") {
+    _mockedShoppingCart = new ShoppingCart("mockedUsername") {
       Items = new List<ShoppingCartItem>() {
-        new ShoppingCartItem() {
+        new() {
           Quantity = 1,
           Color = "Blue",
           Price = 150M,
           ProductName = "Sample Product One",
           ProductId = Guid.NewGuid().ToString()
         },
-        new ShoppingCartItem() {
+        new() {
           Quantity = 2,
           Color = "Green",
           Price = 250M,
@@ -44,7 +44,7 @@ public class BasketServiceTest {
   public async void UpdateBasketAsync_ShouldReturnBasket_WhenCartExists() {
     var mockedShoppingCartRequest = new ShoppingCart("mockedUsername") {
       Items = new List<ShoppingCartItem>() {
-        new ShoppingCartItem() {
+        new() {
           Quantity = 3,
           Color = "Green",
           Price = 250M,
@@ -55,21 +55,21 @@ public class BasketServiceTest {
     };
     var updatedShoppingCart = new ShoppingCart("mockedUsername") {
       Items = new List<ShoppingCartItem>() {
-        new ShoppingCartItem() {
+        new() {
           Quantity = 1,
           Color = "Blue",
           Price = 150M,
           ProductName = "Sample Product One",
           ProductId = Guid.NewGuid().ToString()
         },
-        new ShoppingCartItem() {
+        new() {
           Quantity = 2,
           Color = "Green",
           Price = 250M,
           ProductName = "Sample Product Two",
           ProductId = Guid.NewGuid().ToString()
         },
-        new ShoppingCartItem() {
+        new() {
           Quantity = 3,
           Color = "Green",
           Price = 250M,

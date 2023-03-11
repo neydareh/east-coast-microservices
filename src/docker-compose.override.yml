@@ -14,7 +14,7 @@ services:
     container_name: mongo-express
     restart: always
     ports:
-      - 8081:8081
+      - "8081:8081"
     environment:
       - ME_CONFIG_MONGODB_SERVER=${ME_CONFIG_MONGODB_SERVER}
     depends_on:
@@ -37,6 +37,15 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    
+  orderdb:
+    container_name: orderdb
+    environment:
+      SA_PASSWORD: ${SQL_SERVER_SA_PASSWORD}
+      ACCEPT_EULA: "Y"
+    restart: always
+    ports:
+      - "1433:1433"
 
   # Utilities
   portainer:

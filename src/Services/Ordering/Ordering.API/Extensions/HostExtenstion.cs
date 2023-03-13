@@ -11,23 +11,21 @@ public static class HostExtenstion {
     using var scope = host.Services.CreateScope();
     var services = scope.ServiceProvider;
     var logger = services.GetRequiredService<ILogger<TContext>>();
-    var context = services.GetServices<TContext>();
+    var context = services.GetService<TContext>();
 
     try {
       logger.LogInformation($"Migrating database associated with context {typeof(TContext).Name}");
-      InvokeSeeder<>(seeder, context, services);
+      InvokeSeeder(seeder, context, services);
       logger.LogInformation($"Migrated database associated with context {typeof(TContext).Name}");
     }
     catch (SqlException e) {
       logger.LogError(e, $"An error occurred while migrating the database used on context {typeof(TContext).Name}");
 
-      if (retryForAvailability >= 5) throw;
-
-      retryForAvailability++;
-      Thread.Sleep(2000);
-      MigrateDatabase<TContext>(host, seeder, retryForAvailability);
-
-      throw;
+      if (retryForAvailability < 5) {
+        retryForAvailability++;
+        Thread.Sleep(2000);
+        MigrateDatabase<TContext>(host, seeder, retryForAvailability);
+      }
     }
 
     return host;

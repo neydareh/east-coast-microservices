@@ -36,16 +36,19 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - postgres_discountDb:/var/lib/postgresql/data/
     
   orderdb:
     container_name: orderdb
     environment:
-      SA_PASSWORD: ${SQL_SERVER_SA_PASSWORD}
-      ACCEPT_EULA: "Y"
+      - POSTGRES_USER=${MYSQL_SA_USER}
+      - POSTGRES_PASSWORD=${MYSQL_SA_PASSWORD}
+      - POSTGRES_DB=${MYSQL_SA_DB}
     restart: always
     ports:
-      - "1433:1433"
+      - "5433:5432"
+    volumes:
+      - postgres_orderDb:/var/lib/postgresql/data/
 
   # Utilities
   portainer:

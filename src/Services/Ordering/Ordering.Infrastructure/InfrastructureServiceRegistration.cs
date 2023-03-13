@@ -14,13 +14,13 @@ public static class InfrastructureServiceRegistration {
   public static IServiceCollection AddInfrastructureServices(this IServiceCollection services,
     IConfiguration configuration) {
     services.AddDbContext<OrderContext>(opt =>
-      opt.UseSqlServer(configuration.GetConnectionString("OrderingConnectionString")));
+      opt.UseNpgsql(configuration.GetConnectionString("OrderingConnectionString")));
 
     services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
     services.AddScoped<IOrderRepository, OrderRepository>();
 
     // email configuration
-    services.Configure<EmailSettings>(cfg => configuration.GetSection("EmailSettings"));
+    services.Configure<EmailSettings>(_ => configuration.GetSection("EmailSettings"));
     services.AddTransient<IEmailService, EmailService>();
 
     return services;

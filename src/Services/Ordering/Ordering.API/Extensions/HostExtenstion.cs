@@ -1,5 +1,5 @@
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 namespace Ordering.API.Extensions;
 
@@ -18,7 +18,7 @@ public static class HostExtenstion {
       InvokeSeeder(seeder, context, services);
       logger.LogInformation($"Migrated database associated with context {typeof(TContext).Name}");
     }
-    catch (SqlException e) {
+    catch (NpgsqlException e) {
       logger.LogError(e, $"An error occurred while migrating the database used on context {typeof(TContext).Name}");
 
       if (retryForAvailability < 5) {

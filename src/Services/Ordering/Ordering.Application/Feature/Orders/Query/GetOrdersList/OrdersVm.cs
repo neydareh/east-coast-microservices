@@ -1,6 +1,6 @@
-﻿using Ordering.Domain.Entity;
-namespace Ordering.Application.Feature.Orders.Query.GetOrdersList {
+﻿namespace Ordering.Application.Feature.Orders.Query.GetOrdersList {
   public class OrdersVm {
+    public int Id { get; set; }
     public string? UserName { get; set; }
     public decimal TotalPrice { get; set; }
 

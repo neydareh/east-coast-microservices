@@ -1,4 +1,3 @@
-using System.Net;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Ordering.Application.Feature.Orders.Command.CheckoutOrder;

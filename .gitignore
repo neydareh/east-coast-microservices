@@ -355,6 +355,10 @@ src/Serivces/Catalog/Catalog.API/Catalog.API.md
 /src/Services/Catalog/Catalog.API/appsettings.Development.json
 /src/Services/Basket/Basket.API/appsettings.json
 /src/Services/Basket/Basket.API/appsettings.Development.json
-/src/Services/Ordering/Ordering.API.API/appsettings.json
-/src/Services/Ordering/Ordering.API.API/appsettings.Development.json
+/src/Services/Ordering/Ordering.API/appsettings.json
+/src/Services/Ordering/Ordering.API/appsettings.Development.json
 *.env
+/.idea/.idea.east-coast-microservices.dir/.idea/.gitignore
+/.idea/.idea.east-coast-microservices.dir/.idea/encodings.xml
+/.idea/.idea.east-coast-microservices.dir/.idea/indexLayout.xml
+/.idea/.idea.east-coast-microservices.dir/.idea/vcs.xml

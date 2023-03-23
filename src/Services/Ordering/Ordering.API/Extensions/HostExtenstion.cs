@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
@@ -24,7 +25,7 @@ public static class HostExtenstion {
       if (retryForAvailability < 5) {
         retryForAvailability++;
         Thread.Sleep(2000);
-        MigrateDatabase<TContext>(host, seeder, retryForAvailability);
+        MigrateDatabase(host, seeder, retryForAvailability);
       }
     }
 

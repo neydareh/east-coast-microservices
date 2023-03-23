@@ -663,3 +663,15 @@
 /src/Tests/Catalog.API.Test/bin/Debug/net6.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll
 /src/Services/Catalog/Catalog.API/bin/Debug/net6.0/ZstdSharp.dll
 /src/Tests/Catalog.API.Test/bin/Debug/net6.0/ZstdSharp.dll
+ ../.DS_Store
+.DS_Store
+Services/.DS_Store
+Services/Basket/.DS_Store
+Services/Basket/Basket.API/.DS_Store
+Services/Catalog/.DS_Store
+Services/Catalog/Catalog.API/.DS_Store
+Services/Discount/.DS_Store
+Services/Ordering/.DS_Store
+Services/Ordering/Ordering.Application/.DS_Store
+Services/Ordering/Ordering.Application/Feature/.DS_Store
+Services/Ordering/Ordering.Application/Feature/Orders/.DS_Store

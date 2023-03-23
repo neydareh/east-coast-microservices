@@ -460,3 +460,6 @@ src/Services/Ordering/Ordering.Infrastructure/Migrations/20230323195948_Initial.
 src/Services/Ordering/Ordering.Infrastructure/Migrations/20230323195948_Initial.Designer.cs
 
 src/.env
+
+# EF Core Migrations
+src/Services/Ordering/Ordering.Infrastructure/Migrations/*.cs

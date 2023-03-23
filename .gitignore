@@ -348,17 +348,9 @@ MigrationBackup/
 
 
 .DS_Store
-src/Serivces/Catalog/Catalog.API/Catalog.API.md
-/src/Services/Discount/Discount.API/appsettings.json
-/src/Services/Discount/Discount.API/appsettings.Development.json
-/src/Services/Catalog/Catalog.API/appsettings.json
-/src/Services/Catalog/Catalog.API/appsettings.Development.json
-/src/Services/Basket/Basket.API/appsettings.json
-/src/Services/Basket/Basket.API/appsettings.Development.json
-/src/Services/Ordering/Ordering.API/appsettings.json
-/src/Services/Ordering/Ordering.API/appsettings.Development.json
 *.env
-/.idea/.idea.east-coast-microservices.dir/.idea/.gitignore
-/.idea/.idea.east-coast-microservices.dir/.idea/encodings.xml
-/.idea/.idea.east-coast-microservices.dir/.idea/indexLayout.xml
-/.idea/.idea.east-coast-microservices.dir/.idea/vcs.xml
+/.idea/*
+
+src/Serivces/Catalog/Catalog.API/Catalog.API.md
+/src/Services/*/appsettings.json
+/src/Services/*/appsettings.Development.json

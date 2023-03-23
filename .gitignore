@@ -453,9 +453,7 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 
-
-src/Services/Basket/Basket.API/appsettings.json
-src/Services/Ordering/Ordering.API/appsettings.json
+src/Services/*/*/appsettings.json
 
 src/Services/Ordering/Ordering.Infrastructure/Migrations/OrderContextModelSnapshot.cs
 src/Services/Ordering/Ordering.Infrastructure/Migrations/20230323195948_Initial.cs

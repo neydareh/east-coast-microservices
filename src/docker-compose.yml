@@ -18,6 +18,8 @@ services:
     image: portainer/portainer-ce
   pgadmin:
     image: dpage/pgadmin4
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
 
   # Services
   catalog.api:

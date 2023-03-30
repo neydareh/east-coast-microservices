@@ -21,6 +21,8 @@ builder.Services.AddScoped<DiscountGrpcService>();
 builder.Services
   .AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options => options.Address = new Uri(builder.Configuration.GetValue<string>("GrpcSettings:DiscountUrl")));
 
+builder.Services.AddAutoMapper(typeof(Program));
+
 builder.Services.AddMassTransit(config =>
 {
   config.UsingRabbitMq((_, configurator) =>

@@ -32,7 +32,6 @@ namespace Discount.GRPC.Services {
 
     public override async Task<CouponModel> CreateDiscount(CreateDiscountRequest request, ServerCallContext context)
     {
-      Console.WriteLine(context);
       var coupon = _mapper.Map<Coupon>(request.Coupon);
       await _repository.CreateDiscount(coupon);
       _logger.LogInformation("A discount for {ProductName} was successfully created", coupon.ProductName);

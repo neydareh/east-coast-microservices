@@ -3,14 +3,25 @@ using Discount.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace Discount.API.Controllers {
+namespace Discount.API.Controllers
+{
   [ApiController]
   [Route("api/v1/[controller]")]
-  public class DiscountController : ControllerBase {
+  public class DiscountController : ControllerBase
+  {
     private readonly IDiscountRepository _repository;
+
     public DiscountController(IDiscountRepository repository)
     {
       _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+    }
+
+    [HttpGet(Name = "GetDiscounts")]
+    [ProducesResponseType(typeof(IEnumerable<Coupon>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<IEnumerable<Coupon>>> GetDiscounts()
+    {
+      var coupons = await _repository.GetDiscounts();
+      return Ok(coupons);
     }
 
     [HttpGet("{productName}", Name = "GetDiscount")]
@@ -23,7 +34,7 @@ namespace Discount.API.Controllers {
 
     [HttpPost]
     [ProducesResponseType(typeof(Coupon), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<Coupon>> CreateDiscount([FromBody]Coupon coupon)
+    public async Task<ActionResult<Coupon>> CreateDiscount([FromBody] Coupon coupon)
     {
       await _repository.CreateDiscount(coupon);
       return CreatedAtRoute("GetDiscount", new { productName = coupon.ProductName }, coupon);

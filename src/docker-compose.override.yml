@@ -79,6 +79,14 @@ services:
       - "15672:15672"
       - "5672:5672"
 
+  redis-webui:
+    container_name: redis-webui
+    restart: always
+    environment:
+        - REDIS_HOST=${BASKETDB_CONNECTION_STRING}
+    ports:
+      - "33002:8081"
+  
   # Services
   catalog.api:
     container_name: catalog.api

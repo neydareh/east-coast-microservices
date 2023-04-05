@@ -20,6 +20,8 @@ services:
     image: dpage/pgadmin4
   rabbitmq:
     image: rabbitmq:3-management-alpine
+  redis-webui:
+    image: rediscommander/redis-commander:latest
 
   # Services
   catalog.api:

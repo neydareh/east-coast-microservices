@@ -29,14 +29,12 @@ namespace Basket.API.Controllers {
     [ProducesResponseType(typeof(ShoppingCart), StatusCodes.Status200OK)]
     public async Task<ActionResult<ShoppingCart>> UpdateBasket([FromBody] ShoppingCart basket)
     {
-      foreach (var item in basket.Items)
+      foreach (var item in basket.Items.Where(item => item.ProductName != null))
       {
-        if (item.ProductName != null)
-        {
-          var coupon = await _discountGrpcService.GetDiscount(item.ProductName);
-          item.Price -= coupon.Amount;
-        }
+        var coupon = await _discountGrpcService.GetDiscount(item.ProductName!);
+        item.Price -= coupon.Amount;
       }
+
       return Ok(await _basketRepository.UpdateBasketAsync(basket));
     }
 

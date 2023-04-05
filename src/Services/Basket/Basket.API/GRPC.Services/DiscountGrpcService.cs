@@ -12,7 +12,7 @@ namespace Basket.API.GRPC.Services {
     public async Task<CouponModel> GetDiscount(string productName)
     {
       // create a grpc discount request
-      var discountRequest = new GetDiscountRequest { ProductName = productName };
+      var discountRequest = new GetDiscountRequest { ProductName = productName.ToLower() };
       // call the grpc service to get discount
       return await _discountProtoService.GetDiscountAsync(discountRequest);
     }

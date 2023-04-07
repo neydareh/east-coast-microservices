@@ -83,7 +83,7 @@ services:
     container_name: redis-webui
     restart: always
     environment:
-        - REDIS_HOST=${BASKETDB_CONNECTION_STRING}
+        - REDIS_HOST="basketdb"
     ports:
       - "33002:8081"
   

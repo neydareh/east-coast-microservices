@@ -7,24 +7,29 @@ using Ordering.Domain.Entity;
 
 namespace Ordering.Application.Feature.Orders.Command.DeleteOrder;
 
-public class DeleteOrderCommandHandler : IRequestHandler<DeleteOrderCommandRequest> {
+public class DeleteOrderCommandHandler : IRequestHandler<DeleteOrderCommandRequest>
+{
   private readonly IOrderRepository _orderRepository;
   private readonly IMapper _mapper;
   private readonly ILogger<DeleteOrderCommandHandler> _logger;
 
   public DeleteOrderCommandHandler(IOrderRepository orderRepository, IMapper mapper,
-    ILogger<DeleteOrderCommandHandler> logger) {
+    ILogger<DeleteOrderCommandHandler> logger)
+  {
     _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
     _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     _logger = logger ?? throw new ArgumentNullException(nameof(logger));
   }
 
-  public async Task Handle(DeleteOrderCommandRequest request, CancellationToken cancellationToken) {
+  public async Task Handle(DeleteOrderCommandRequest request, CancellationToken cancellationToken)
+  {
     var orderToDelete = await _orderRepository.GetByIdAsync(request.Id);
-    if (orderToDelete == null) {
+    if (orderToDelete == null)
+    {
       throw new NotFoundException(nameof(Order), request.Id);
     }
+
     await _orderRepository.DeleteAsync(orderToDelete!);
-    _logger.LogInformation($"Order {orderToDelete!.Id} was successfully deleted");
+    _logger.LogInformation("Order {id} was successfully deleted", orderToDelete!.Id);
   }
 }

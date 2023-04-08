@@ -8,7 +8,7 @@ public class OrderContext : DbContext {
   public OrderContext(DbContextOptions<OrderContext> options) : base(options) {
   }
 
-  public DbSet<Order> Orders { get; set; }
+  public DbSet<Order>? Orders { get; set; }
 
   public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken()) {
     foreach (var entry in ChangeTracker.Entries<EntityBase>()) {
@@ -21,6 +21,8 @@ public class OrderContext : DbContext {
           entry.Entity.LastModifiedDate = DateTime.UtcNow;
           entry.Entity.LastModifiedBy = "swn";
           break;
+        default:
+          throw new ArgumentOutOfRangeException();
       }
     }
 

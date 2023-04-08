@@ -1,3 +1,4 @@
+using Basket.API.Controllers;
 using Basket.API.GRPC.Services;
 using Basket.API.Repositories;
 using Discount.GRPC.Protos;
@@ -12,26 +13,28 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Redis
 builder.Services
-  .AddStackExchangeRedisCache(options => options.Configuration = builder.Configuration.GetValue<string>("CacheSettings:ConnectionString"));
+  .AddStackExchangeRedisCache(options =>
+    options.Configuration = builder.Configuration.GetValue<string>("CacheSettings:ConnectionString"));
 
+// Repositories and Services
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.AddScoped<DiscountGrpcService>();
 
+// GRPC
 builder.Services
-  .AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options => options.Address = new Uri(builder.Configuration.GetValue<string>("GrpcSettings:DiscountUrl")));
+  .AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options =>
+    options.Address = new Uri(builder.Configuration.GetValue<string>("GrpcSettings:DiscountUrl")));
 
+// Mapper
 builder.Services.AddAutoMapper(typeof(Program));
 
+// RabbitMQ
 builder.Services.AddMassTransit(config =>
 {
-  config.UsingRabbitMq((_, configurator) =>
-  {
-    configurator.Host(builder.Configuration.GetValue<string>("EventBusSettings:HostAddress"));
-  });
+  config.UsingRabbitMq((_, cfg) => { cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]); });
 });
-
-// builder.Services.AddMassTransitHostedService();
 
 var app = builder.Build();
 

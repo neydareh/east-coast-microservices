@@ -38,6 +38,7 @@ services:
     volumes:
       - postgres_discountDb:/var/lib/postgresql/data/
     
+
   orderdb:
     container_name: orderdb
     environment:
@@ -104,8 +105,10 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "CacheSettings:ConnectionString=${BASKETDB_CONNECTION_STRING}"
       - "GrpcSettings:DiscountUrl=${DISCOUNT_GRPC_URL}"
+      - "EventBusSettings:HostAddress=${RABBITMQ_HOST}"
     depends_on:
       - basketdb
+      - rabbitmq
     ports:
       - "8001:80"
 
@@ -129,12 +132,15 @@ services:
     ports:
       - "8003:80"
         
+
   order.api:
     container_name: order.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "ConnectionStrings:OrderingConnectionString=${ORDERDB_CONNECTION_STRING}"
+      - "EventBusSettings:HostAddress=${RABBITMQ_HOST}"
     depends_on:
       - orderdb
+      - rabbitmq
     ports:
       - "8004:80"

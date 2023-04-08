@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Basket.API\Basket.API.csproj" />
+      <ProjectReference Include="..\..\Services\Basket\Basket.API\Basket.API.csproj" />
     </ItemGroup>
 
 </Project>

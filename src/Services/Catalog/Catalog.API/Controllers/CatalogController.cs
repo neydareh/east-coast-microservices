@@ -11,7 +11,7 @@ namespace Catalog.API.Controllers
   {
     private readonly IProductRepository _repository;
     private readonly ILogger<CatalogController> _logger;
-    private readonly TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+    private readonly TextInfo _textInfo = CultureInfo.CurrentCulture.TextInfo;
 
     public CatalogController(IProductRepository repository, ILogger<CatalogController> logger)
     {
@@ -93,8 +93,8 @@ namespace Catalog.API.Controllers
         var product = new Product
         {
           Id = Guid.NewGuid().ToString(),
-          Name = textInfo.ToLower(productRequest.Name!),
-          Category = textInfo.ToLower(productRequest.Category!),
+          Name = _textInfo.ToLower(productRequest.Name!),
+          Category = _textInfo.ToLower(productRequest.Category!),
           Summary = productRequest.Summary,
           Description = productRequest.Description,
           ImageFile = productRequest.ImageFile,
@@ -120,8 +120,8 @@ namespace Catalog.API.Controllers
         var product = new Product
         {
           Id = Guid.NewGuid().ToString(),
-          Name = textInfo.ToLower(productRequest.Name!),
-          Category = textInfo.ToLower(productRequest.Category!),
+          Name = _textInfo.ToLower(productRequest.Name!),
+          Category = _textInfo.ToLower(productRequest.Category!),
           Summary = productRequest.Summary,
           Description = productRequest.Description,
           ImageFile = productRequest.ImageFile,

@@ -1,3 +1,4 @@
+using Ocelot.Cache.CacheManager;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -11,8 +12,8 @@ builder.Logging.AddConsole();
 builder.Logging.AddDebug();
 
 // Add Ocelot to project
-builder.Services.AddOcelot();
-  
+builder.Services.AddOcelot().AddCacheManager(cfg => cfg.WithDictionaryHandle());
+
 var app = builder.Build();
 
 

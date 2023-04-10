@@ -36,8 +36,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_discountDb:/var/lib/postgresql/data/
-    
+      - postgres_discountDb:/var/lib/postgresql/data/  
 
   orderdb:
     container_name: orderdb
@@ -84,7 +83,7 @@ services:
     container_name: redis-webui
     restart: always
     environment:
-        - REDIS_HOST="basketdb"
+      - REDIS_HOST="basketdb"
     ports:
       - "33002:8081"
   
@@ -131,7 +130,6 @@ services:
       - discountdb
     ports:
       - "8003:80"
-        
 
   order.api:
     container_name: order.api
@@ -144,3 +142,16 @@ services:
       - rabbitmq
     ports:
       - "8004:80"
+  
+  ocelotapigateway:
+    container_name: ocelotapigateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - catalog.api
+      - basket.api
+      - discount.api
+      - order.api
+    ports:
+      - "8010:80"
+      

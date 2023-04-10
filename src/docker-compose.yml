@@ -47,12 +47,18 @@ services:
     build:
       context: .
       dockerfile: Services/Discount/Discount.GRPC/Dockerfile
-  
+
   order.api:
     image: ${DOCKER_REGISTRY-}orderapi
     build:
       context: .
       dockerfile: Services/Ordering/Ordering.API/Dockerfile
+
+  ocelotapigateway:
+    image: ${DOCKER_REGISTRY-}ocelotapigateway
+    build:
+      context: .
+      dockerfile: ApiGateways/OcelotApiGateway/Dockerfile
 
 volumes:
   mongo_data:

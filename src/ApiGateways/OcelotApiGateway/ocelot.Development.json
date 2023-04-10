@@ -32,7 +32,10 @@
       "UpstreamHttpMethod": [
         "GET",
         "DELETE"
-      ]
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 30
+      }
     },
     {
       "DownstreamPathTemplate": "/api/v1/Catalog/GetProductByCategory/{category}",
@@ -46,7 +49,10 @@
       "UpstreamPathTemplate": "/Catalog/GetProductByCategory/{category}",
       "UpstreamHttpMethod": [
         "GET"
-      ]
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 30
+      }
     },
     {
       "DownstreamPathTemplate": "/api/v1/Basket/{username}",
@@ -61,7 +67,10 @@
       "UpstreamHttpMethod": [
         "GET",
         "DELETE"
-      ]
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 30
+      }
     },
     {
       "DownstreamPathTemplate": "/api/v1/Basket",
@@ -75,7 +84,10 @@
       "UpstreamPathTemplate": "/Basket",
       "UpstreamHttpMethod": [
         "POST"
-      ]
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 30
+      }
     },
     {
       "DownstreamPathTemplate": "/api/v1/Basket/Checkout",
@@ -96,6 +108,9 @@
         "Period": "3s",
         "PeriodTimespan": 1,
         "Limit": 1
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 30
       }
     },
     {
@@ -111,7 +126,10 @@
       "UpstreamHttpMethod": [
         "GET",
         "DELETE"
-      ]
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 30
+      }
     },
     {
       "DownstreamPathTemplate": "/api/v1/Discount",
@@ -126,7 +144,10 @@
       "UpstreamHttpMethod": [
         "PUT",
         "POST"
-      ]
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 30
+      }
     },
     {
       "DownstreamPathTemplate": "/api/v1/Order/{username}",
@@ -140,7 +161,10 @@
       "UpstreamPathTemplate": "/Order/{username}",
       "UpstreamHttpMethod": [
         "GET"
-      ]
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 30
+      }
     }
   ],
   "GlobalConfiguration": {
